@@ -32,13 +32,15 @@ function init(){
         });
     }
     var RTBody;
-    var iid = setInterval(set,1000);
-    function set(){
-        if ($("._options.messageOptions").length != 0){
+    var isFirst=true;
+    document.addEventListener("DOMNodeInserted",set,false);
+    function set(evt){
+        var id = evt.target.getAttribute("id");
+        console.log(evt.target);
+        if(typeof id == "string" && id == "streamsContainer"){
             if(rtOpt){setRT();}
             if(1){OptionHeight();}
-            if(refreshOpt){RefreshButton();}
-            clearInterval(iid);
+            if(refreshOpt && isFirst){RefreshButton();isFirst=false;}
         }
     }
     function setRT(){
