@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Enhanced Hootsuite Options</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+// Saves options to localStorage.
+function save_options() {
+  localStorage["profile"] = $("#profile").attr("checked");
+  localStorage["rt"] = $("#rt").attr("checked");
+  localStorage["refresh"] = $("#refresh").attr("checked");
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "保存しました";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 1500);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  if(localStorage["rt"] == undefined){localStorage["rt"] = true;}
+  if(localStorage["profile"] == undefined){localStorage["profile"] = false;}
+  if(localStorage["refresh"] == undefined){localStorage["refresh"] = false;}
+  $("#rt").attr("checked",eval(localStorage["rt"]));
+  $("#profile").attr("checked",eval(localStorage["profile"]));
+  $("#refresh").attr("checked",eval(localStorage["refresh"]));
+}
+
+</script>
+
+<body onload="restore_options()">
+
+<input id="rt" type="checkbox">
+:非公式RTボタンを追加する
+<br>
+<input id="profile" type="checkbox">
+:プロフィール表示をtwitter.comのプロフィールにする
+<br>
+<input id="refresh" type="checkbox">
+:リフレッシュボタンを追加する。
+<br>
+<button onclick="save_options()">保存</button>
+<br>
+※保存した後hootsuite.comを再読込すると反映されます。
+<br>
+<span id="status"></span>
+</body>
+</html>
