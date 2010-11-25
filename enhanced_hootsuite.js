@@ -35,8 +35,8 @@ function init(){
     var isFirst=true;
     document.addEventListener("DOMNodeInserted",set,false);
     function set(evt){
+        if(evt.target.nodeType == 3){return;}
         var id = evt.target.getAttribute("id");
-        console.log(evt.target);
         if(typeof id == "string" && id == "streamsContainer"){
             if(rtOpt){setRT();}
             if(1){OptionHeight();}
@@ -57,6 +57,8 @@ function init(){
     function OptionHeight(){
         var $options = $("._options.messageOptions");
         $options.css("height","10px");
+        var $moreOptions = $(".moreOptionsMenu");
+        $moreOptions.css("top","17px");
     }
     function RefreshButton(){
         var $button = $(".controls ._refresh").clone(true);
