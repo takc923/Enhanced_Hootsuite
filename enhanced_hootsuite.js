@@ -35,7 +35,7 @@ function init(){
     var isFirst=true;
     document.addEventListener("DOMNodeInserted",set,false);
     function set(evt){
-        if(evt.target.nodeType == 3){return;}
+        if(evt.target.nodeType != 1){return;}
         var id = evt.target.getAttribute("id");
         if(typeof id == "string" && id == "streamsContainer"){
             if(rtOpt){setRT();}
