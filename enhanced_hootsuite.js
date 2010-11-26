@@ -8,7 +8,8 @@ chrome.extension.sendRequest( {
             "rt" : "true" , 
             "profile" : "false",
             "refresh" : "false",
-            "replyAll": "false"
+            "replyAll": "false",
+            "dm"      : "false"
         }]
     } , function( response ){
         option = response.values ;
@@ -23,6 +24,7 @@ function init(){
     var profileOpt = eval(option["profile"]);
     var refreshOpt = eval(option["refresh"]);
     var replyAllOpt = eval(option["replyAll"]);
+    var dmOpt = eval(option["dm"]);
     
     if(profileOpt){
         $('._userInfoPopup').live('mouseover',function(){
@@ -42,7 +44,8 @@ function init(){
         if(typeof id == "string" && id == "streamsContainer"){
             if(rtOpt){setRT();}
             if(1){OptionHeight();}
-            if(replyAllOpt){setReplyAll(evt.target);}
+            if(replyAllOpt){setReplyAll();}
+            if(dmOpt){setDM();}
             if(refreshOpt && isFirst){RefreshButton();isFirst=false;}
         }
     }
@@ -67,6 +70,11 @@ function init(){
         $("._replyAll").remove();
         var $replyAll = $('<a class="_jsTooltip icon-19 replyAll _replyAll" title="全員に返信" href="javascript:;"></a>');
         $(".directMessage").after($replyAll);
+    }
+    function setDM(){
+        $dm = $(".directMessage").remove();
+        var $dm = $('<a class="_dm" title="ダイレクトメッセージ" href="javascript:;"><span class="icon-19 directMessage"></span>ダイレクトメッセージ</a>');
+        $("._sendToEmail").after($dm);
     }
     function RefreshButton(){
         var $button = $(".controls ._refresh").clone(true);

@@ -12,6 +12,7 @@ function save_options() {
   localStorage["rt"] = $("#rt").attr("checked");
   localStorage["refresh"] = $("#refresh").attr("checked");
   localStorage["replyAll"] = $("#replyAll").attr("checked");
+  localStorage["dm"] = $("#dm").attr("checked");
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -27,10 +28,12 @@ function restore_options() {
   if(localStorage["profile"] == undefined){localStorage["profile"] = false;}
   if(localStorage["refresh"] == undefined){localStorage["refresh"] = false;}
   if(localStorage["replyAll"] == undefined){localStorage["replyAll"] = false;}
+  if(localStorage["dm"] == undefined){localStorage["dm"] = false;}
   $("#rt").attr("checked",eval(localStorage["rt"]));
   $("#profile").attr("checked",eval(localStorage["profile"]));
   $("#refresh").attr("checked",eval(localStorage["refresh"]));
   $("#replyAll").attr("checked",eval(localStorage["replyAll"]));
+  $("#dm").attr("checked",eval(localStorage["dm"]));
 }
 
 </script>
@@ -48,6 +51,9 @@ function restore_options() {
 <br>
 <input id="replyAll" type="checkbox">
 :「全員に返信」を外に出す。
+<br>
+<input id="dm" type="checkbox">
+:「ダイレクトメッセージ」を中に入れる。
 <br>
 <button onclick="save_options()">保存</button>
 <br>
