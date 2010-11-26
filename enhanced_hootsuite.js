@@ -7,7 +7,8 @@ chrome.extension.sendRequest( {
         args   : [{ 
             "rt" : "true" , 
             "profile" : "false",
-            "refresh" : "false"
+            "refresh" : "false",
+            "replyAll": "false"
         }]
     } , function( response ){
         option = response.values ;
@@ -21,6 +22,7 @@ function init(){
     var rtOpt = eval(option["rt"]);
     var profileOpt = eval(option["profile"]);
     var refreshOpt = eval(option["refresh"]);
+    var replyAllOpt = eval(option["replyAll"]);
     
     if(profileOpt){
         $('._userInfoPopup').live('mouseover',function(){
@@ -40,6 +42,7 @@ function init(){
         if(typeof id == "string" && id == "streamsContainer"){
             if(rtOpt){setRT();}
             if(1){OptionHeight();}
+            if(replyAllOpt){setReplyAll(evt.target);}
             if(refreshOpt && isFirst){RefreshButton();isFirst=false;}
         }
     }
@@ -59,6 +62,11 @@ function init(){
         $options.css("height","10px");
         var $moreOptions = $(".moreOptionsMenu");
         $moreOptions.css("top","17px");
+    }
+    function setReplyAll(){
+        $("._replyAll").remove();
+        var $replyAll = $('<a class="_jsTooltip icon-19 replyAll _replyAll" title="全員に返信" href="javascript:;"></a>');
+        $(".directMessage").after($replyAll);
     }
     function RefreshButton(){
         var $button = $(".controls ._refresh").clone(true);

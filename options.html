@@ -11,6 +11,7 @@ function save_options() {
   localStorage["profile"] = $("#profile").attr("checked");
   localStorage["rt"] = $("#rt").attr("checked");
   localStorage["refresh"] = $("#refresh").attr("checked");
+  localStorage["replyAll"] = $("#replyAll").attr("checked");
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -25,9 +26,11 @@ function restore_options() {
   if(localStorage["rt"] == undefined){localStorage["rt"] = true;}
   if(localStorage["profile"] == undefined){localStorage["profile"] = false;}
   if(localStorage["refresh"] == undefined){localStorage["refresh"] = false;}
+  if(localStorage["replyAll"] == undefined){localStorage["replyAll"] = false;}
   $("#rt").attr("checked",eval(localStorage["rt"]));
   $("#profile").attr("checked",eval(localStorage["profile"]));
   $("#refresh").attr("checked",eval(localStorage["refresh"]));
+  $("#replyAll").attr("checked",eval(localStorage["replyAll"]));
 }
 
 </script>
@@ -42,6 +45,9 @@ function restore_options() {
 <br>
 <input id="refresh" type="checkbox">
 :リフレッシュボタンを追加する。
+<br>
+<input id="replyAll" type="checkbox">
+:「全員に返信」を外に出す。
 <br>
 <button onclick="save_options()">保存</button>
 <br>

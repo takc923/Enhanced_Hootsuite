@@ -1,6 +1,6 @@
 {
   "name": "Enhanced Hootsuite",
-  "version": "1.6.0",
+  "version": "1.7.0",
 
   "description": "hootsuite.comで非公式RTボタンを追加します。hootsuiteのリツイート設定を公式の方にすると(ふくろうの顔から設定画面に行けます)同時に非公式・公式リツイートどちらも使えるようになります。またhootsuite.comでプロフィールを表示するリンクをクリックするとtwitter.comのプロフィールページを表示するようにします。",
   "content_scripts": [
