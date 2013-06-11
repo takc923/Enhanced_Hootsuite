@@ -1,14 +1,16 @@
 {
   "name": "Enhanced Hootsuite",
   "version": "1.8.0",
+  "manifest_version": 2,
 
   "description": "hootsuite.comで非公式RTボタンを追加します。hootsuiteのリツイート設定を公式の方にすると(ふくろうの顔から設定画面に行けます)同時に非公式・公式リツイートどちらも使えるようになります。またhootsuite.comでプロフィールを表示するリンクをクリックするとtwitter.comのプロフィールページを表示するようにします。",
   "content_scripts": [
     {
-      "matches": ["http://hootsuite.com/*"],
+      "matches": ["https://hootsuite.com/*"],
       "js": ["jquery.js", "enhanced_hootsuite.js"]
     }
   ],
-  "background_page": "background_page.html",
-  "options_page": "options.html"
+  "background": "background_page.html",
+  "options_page": "options.html",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

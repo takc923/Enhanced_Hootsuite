@@ -1,44 +1,12 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Enhanced Hootsuite Options</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript">
-
-// Saves options to localStorage.
-function save_options() {
-  localStorage["profile"] = $("#profile").attr("checked");
-  localStorage["rt"] = $("#rt").attr("checked");
-  localStorage["refresh"] = $("#refresh").attr("checked");
-  localStorage["replyAll"] = $("#replyAll").attr("checked");
-  localStorage["dm"] = $("#dm").attr("checked");
-
-  // Update status to let user know options were saved.
-  var status = document.getElementById("status");
-  status.innerHTML = "保存しました";
-  setTimeout(function() {
-    status.innerHTML = "";
-  }, 1500);
-}
-
-// Restores select box state to saved value from localStorage.
-function restore_options() {
-  if(localStorage["rt"] == undefined){localStorage["rt"] = true;}
-  if(localStorage["profile"] == undefined){localStorage["profile"] = false;}
-  if(localStorage["refresh"] == undefined){localStorage["refresh"] = false;}
-  if(localStorage["replyAll"] == undefined){localStorage["replyAll"] = false;}
-  if(localStorage["dm"] == undefined){localStorage["dm"] = false;}
-  $("#rt").attr("checked",eval(localStorage["rt"]));
-  $("#profile").attr("checked",eval(localStorage["profile"]));
-  $("#refresh").attr("checked",eval(localStorage["refresh"]));
-  $("#replyAll").attr("checked",eval(localStorage["replyAll"]));
-  $("#dm").attr("checked",eval(localStorage["dm"]));
-}
-
-</script>
-
-<body onload="restore_options()">
+<script type="text/javascript" src="option.js"></script>
+<body>
 
 <input id="rt" type="checkbox">
 :非公式RTボタンを追加する
@@ -55,7 +23,7 @@ function restore_options() {
 <input id="dm" type="checkbox">
 :「ダイレクトメッセージ」を中に入れる。
 <br>
-<button onclick="save_options()">保存</button>
+<button id="save-button">保存</button>
 <br>
 ※保存した後hootsuite.comを再読込すると反映されます。
 <br>
