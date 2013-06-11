@@ -1,11 +1,11 @@
 var option = null ;
 
 //真っ先に必要なデータを裏から受け取る
-chrome.extension.sendRequest( { 
+chrome.extension.sendRequest( {
         //localStorageからuserIdとpasswdを読み込むお願いをする
-        action : "getValues" , 
-        args   : [{ 
-            "rt" : "true" , 
+        action : "getValues" ,
+        args   : [{
+            "rt" : "true" ,
             "profile" : "false",
             "refresh" : "false",
             "replyAll": "false",
@@ -25,7 +25,7 @@ function init(){
     var refreshOpt = eval(option["refresh"]);
     var replyAllOpt = eval(option["replyAll"]);
     var dmOpt = eval(option["dm"]);
-    
+
     if(profileOpt){
         $('._userInfoPopup').live('mouseover',function(){
             var classes = $(this).attr("class");
